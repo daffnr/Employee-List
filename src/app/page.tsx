@@ -27,13 +27,12 @@ import {
   randomTraderName,
   randomId,
   randomArrayItem,
+  randomEmail,
+  randomPhoneNumber,
 } from '@mui/x-data-grid-generator';
 
-
 const roles = ['Market', 'Finance', 'Development'];
-const randomRole = () => {
-  return randomArrayItem(roles);
-};
+const randomRole = () => randomArrayItem(roles);
 
 const initialRows: GridRowsProp = [
   {
@@ -42,6 +41,8 @@ const initialRows: GridRowsProp = [
     age: 25,
     joinDate: randomCreatedDate(),
     role: randomRole(),
+    email: randomEmail(),
+    phoneNumber: randomPhoneNumber(),
   },
   {
     id: randomId(),
@@ -49,6 +50,8 @@ const initialRows: GridRowsProp = [
     age: 36,
     joinDate: randomCreatedDate(),
     role: randomRole(),
+    email: randomEmail(),
+    phoneNumber: randomPhoneNumber(),
   },
   {
     id: randomId(),
@@ -56,6 +59,8 @@ const initialRows: GridRowsProp = [
     age: 19,
     joinDate: randomCreatedDate(),
     role: randomRole(),
+    email: randomEmail(),
+    phoneNumber: randomPhoneNumber(),
   },
   {
     id: randomId(),
@@ -63,6 +68,8 @@ const initialRows: GridRowsProp = [
     age: 28,
     joinDate: randomCreatedDate(),
     role: randomRole(),
+    email: randomEmail(),
+    phoneNumber: randomPhoneNumber(),
   },
   {
     id: randomId(),
@@ -70,6 +77,8 @@ const initialRows: GridRowsProp = [
     age: 23,
     joinDate: randomCreatedDate(),
     role: randomRole(),
+    email: randomEmail(),
+    phoneNumber: randomPhoneNumber(),
   },
 ];
 
@@ -85,7 +94,10 @@ function EditToolbar(props: EditToolbarProps) {
 
   const handleClick = () => {
     const id = randomId();
-    setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
+    setRows((oldRows) => [
+      ...oldRows,
+      { id, name: '', age: '', email: '', phoneNumber: '', isNew: true },
+    ]);
     setRowModesModel((oldModel) => ({
       ...oldModel,
       [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
@@ -170,6 +182,18 @@ export default function FullFeaturedCrudGrid() {
       editable: true,
       type: 'singleSelect',
       valueOptions: ['Market', 'Finance', 'Development'],
+    },
+    {
+      field: 'email',
+      headerName: 'Email',
+      width: 250,
+      editable: true,
+    },
+    {
+      field: 'phoneNumber',
+      headerName: 'Phone Number',
+      width: 150,
+      editable: true,
     },
     {
       field: 'actions',
