@@ -1,5 +1,5 @@
-"use client"
 /* eslint-disable react/jsx-key */
+"use client"
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -105,8 +105,13 @@ function EditToolbar(props: EditToolbarProps) {
   };
 
   return (
-    <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+    <GridToolbarContainer className="p-4 flex justify-between items-center bg-blue-100">
+      <Button
+        color="primary"
+        startIcon={<AddIcon />}
+        onClick={handleClick}
+        className="bg-blue-500 text-white hover:bg-blue-600 px-4 py-2 rounded-md shadow-md"
+      >
         Add record
       </Button>
     </GridToolbarContainer>
@@ -209,9 +214,7 @@ export default function FullFeaturedCrudGrid() {
             <GridActionsCellItem
               icon={<SaveIcon />}
               label="Save"
-              sx={{
-                color: 'primary.main',
-              }}
+              sx={{ color: 'primary.main' }}
               onClick={handleSaveClick(id)}
             />,
             <GridActionsCellItem
@@ -255,6 +258,7 @@ export default function FullFeaturedCrudGrid() {
           color: 'text.primary',
         },
       }}
+      className="bg-white rounded-lg shadow-lg overflow-hidden"
     >
       <DataGrid
         rows={rows}
@@ -270,6 +274,7 @@ export default function FullFeaturedCrudGrid() {
         slotProps={{
           toolbar: { setRows, setRowModesModel },
         }}
+        className="w-full"
       />
     </Box>
   );
